@@ -511,8 +511,8 @@
 .floating-input-wrapper .floating-input {
   height: 3.25rem;
   width: 100%;
-  padding-top: 1rem;
-  padding-bottom: 0.25rem;
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
   padding-inline-start: 2.75rem;
   padding-inline-end: 2.75rem;
   border: 1px solid var(--border-color);
