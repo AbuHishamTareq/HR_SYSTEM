@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  PHP_VERSION: "8.3"
+  PHP_VERSION: "8.4"
   NODE_VERSION: "22"
   FLUTTER_VERSION: "3.41"
 
