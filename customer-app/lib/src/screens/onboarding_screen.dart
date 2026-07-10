@@ -10,6 +10,8 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
+  static const Color _saudiGreen = Color(0xFF006C35);
+
   final PageController _pageController = PageController();
   int _currentPage = 0;
 
@@ -63,7 +65,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 child: Text(
                   'Skip',
                   style: theme.textTheme.bodyMedium?.copyWith(
-                    color: theme.colorScheme.primary,
+                    color: _saudiGreen,
                   ),
                 ),
               ),
@@ -88,7 +90,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         Icon(
                           slide.icon,
                           size: 100,
-                          color: theme.colorScheme.primary,
+                          color: _saudiGreen,
                         ),
                         const SizedBox(height: 40),
                         Text(
@@ -121,8 +123,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   height: 8,
                   decoration: BoxDecoration(
                     color: _currentPage == index
-                        ? theme.colorScheme.primary
-                        : theme.colorScheme.primary.withValues(alpha: 0.3),
+                        ? _saudiGreen
+                        : _saudiGreen.withValues(alpha: 0.3),
                     borderRadius: BorderRadius.circular(4),
                   ),
                 ),

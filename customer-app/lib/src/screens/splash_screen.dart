@@ -13,6 +13,8 @@ class SplashScreen extends ConsumerStatefulWidget {
 }
 
 class _SplashScreenState extends ConsumerState<SplashScreen> {
+  static const Color _saudiGreen = Color(0xFF006C35);
+
   @override
   void initState() {
     super.initState();
@@ -64,13 +66,13 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
             Icon(
               Icons.build_circle,
               size: 80,
-              color: theme.colorScheme.primary,
+              color: _saudiGreen,
             ),
             const SizedBox(height: 24),
             Text(
               'HR System',
               style: theme.textTheme.headlineLarge?.copyWith(
-                color: theme.colorScheme.primary,
+                color: _saudiGreen,
                 fontWeight: FontWeight.bold,
               ),
             ),

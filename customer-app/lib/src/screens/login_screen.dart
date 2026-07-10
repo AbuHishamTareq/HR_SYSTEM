@@ -13,14 +13,13 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen>
     with TickerProviderStateMixin {
   // ── Form state ──
-  final _formKey = GlobalKey<FormState>();
-  final _phoneController = TextEditingController();
-  String _countryCode = '+966';
-  bool _isLoading = false;
-
-  // ── Saudi flag colour palette ──
   static const Color _saudiGreen = Color(0xFF006C35);
   static const Color _lightGreen = Color(0xFFE8F5E9);
+
+  final _formKey = GlobalKey<FormState>();
+  final _phoneController = TextEditingController();
+  bool _isLoading = false;
+  bool _showVisitorButton = false;
 
   // ═══════════════════════════════════════════════════
   //  Animation Controllers
@@ -170,6 +169,9 @@ class _LoginScreenState extends State<LoginScreen>
     Future.delayed(const Duration(milliseconds: 600), () {
       if (mounted) _buttonController.forward();
     });
+    Future.delayed(const Duration(milliseconds: 900), () {
+      if (mounted) setState(() => _showVisitorButton = true);
+    });
   }
 
   // ──────────────────────────────────────────────────
@@ -200,7 +202,7 @@ class _LoginScreenState extends State<LoginScreen>
       if (!mounted) return;
       setState(() => _isLoading = false);
 
-      final phone = '$_countryCode${_phoneController.text}';
+      final phone = '+966${_phoneController.text}';
       context.go('/otp?phone=$phone');
     });
   }
@@ -222,6 +224,7 @@ class _LoginScreenState extends State<LoginScreen>
   //  Scaffold — full-screen animated gradient
   // ═══════════════════════════════════════════════════
   Widget _buildScaffold(bool isTablet) {
+    final theme = Theme.of(context);
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: Stack(
@@ -230,7 +233,7 @@ class _LoginScreenState extends State<LoginScreen>
           AnimatedBuilder(
             animation: _bgPulseController,
             builder: (context, child) {
-              final isDark = Theme.of(context).brightness == Brightness.dark;
+              final isDark = theme.brightness == Brightness.dark;
               return Container(
                 width: double.infinity,
                 height: double.infinity,
@@ -239,13 +242,13 @@ class _LoginScreenState extends State<LoginScreen>
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      // Saudi green at top — subtly pulses between two shades
+                      // Primary at top — subtly pulses between two shades
                       Color.lerp(
                         _saudiGreen,
                         const Color(0xFF005A2E),
                         _bgPulseAnim.value,
                       )!,
-                      // Bottom fades to light green (light) or dark (dark mode)
+                      // Bottom fades to light (light) or dark (dark mode)
                       isDark
                           ? Color.lerp(
                               const Color(0xFF001A0E),
@@ -265,7 +268,7 @@ class _LoginScreenState extends State<LoginScreen>
           ),
 
           // ── Animated decorative floating rings ──
-          ..._buildFloatingRings(),
+          ..._buildFloatingRings(theme),
 
           // ── Safe content area ──
           SafeArea(
@@ -279,7 +282,7 @@ class _LoginScreenState extends State<LoginScreen>
   // ═══════════════════════════════════════════════════
   //  Floating Decorative Rings
   // ═══════════════════════════════════════════════════
-  List<Widget> _buildFloatingRings() {
+  List<Widget> _buildFloatingRings(ThemeData theme) {
     return [
       // Ring 1 — top-left area (large, very subtle)
       _AnimatedRing(
@@ -386,20 +389,15 @@ class _LoginScreenState extends State<LoginScreen>
                 borderRadius: BorderRadius.circular(28),
               ),
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(28, 0, 28, 36),
+                padding: const EdgeInsets.fromLTRB(28, 20, 28, 36),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    // ── Avatar badge (overlaps top edge) ──
-                    Transform.translate(
-                      offset: const Offset(0, -40),
-                      child: _buildAvatarBadge(theme),
-                    ),
-                    // ── Content (pulled up snug against badge) ──
-                    Transform.translate(
-                      offset: const Offset(0, -20),
-                      child: _buildCardContent(theme),
-                    ),
+                    // ── Avatar badge ──
+                    _buildAvatarBadge(theme),
+                    const SizedBox(height: 12),
+                    // ── Content ──
+                    _buildCardContent(theme),
                   ],
                 ),
               ),
@@ -470,6 +468,12 @@ class _LoginScreenState extends State<LoginScreen>
         const SizedBox(height: 24),
         // Submit button
         _buildAnimatedButton(theme),
+        const SizedBox(height: 16),
+        // Login as Visitor (fade-in after button)
+        _buildVisitorButton(theme),
+        const SizedBox(height: 12),
+        // Signup prompt
+        _buildSignupPrompt(theme),
       ],
     );
   }
@@ -495,60 +499,9 @@ class _LoginScreenState extends State<LoginScreen>
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Country code dropdown
-                _buildCountryCodeDropdown(theme),
-                const SizedBox(width: 12),
-                // Phone number field
-                Expanded(child: _buildPhoneField(theme)),
-              ],
-            ),
+            _buildPhoneField(theme),
           ],
         ),
-      ),
-    );
-  }
-
-  // ═══════════════════════════════════════════════════
-  //  Country Code Dropdown
-  // ═══════════════════════════════════════════════════
-  Widget _buildCountryCodeDropdown(ThemeData theme) {
-    final isDark = theme.brightness == Brightness.dark;
-
-    return SizedBox(
-      width: 130,
-      child: DropdownButtonFormField<String>(
-        initialValue: _countryCode,
-        isExpanded: true,
-        decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(
-              color: isDark ? Colors.grey.shade700 : Colors.grey.shade300,
-            ),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(
-              color: isDark ? Colors.grey.shade700 : Colors.grey.shade300,
-            ),
-          ),
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 12,
-            vertical: 14,
-          ),
-        ),
-        items: const [
-          DropdownMenuItem(value: '+966', child: Text('🇸🇦 +966')),
-          DropdownMenuItem(value: '+971', child: Text('🇦🇪 +971')),
-          DropdownMenuItem(value: '+973', child: Text('🇧🇭 +973')),
-          DropdownMenuItem(value: '+965', child: Text('🇰🇼 +965')),
-        ],
-        onChanged: (value) {
-          if (value != null) setState(() => _countryCode = value);
-        },
       ),
     );
   }
@@ -571,7 +524,7 @@ class _LoginScreenState extends State<LoginScreen>
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: _saudiGreen, width: 2),
+          borderSide: BorderSide(color: _saudiGreen, width: 2),
         ),
       ),
       validator: (value) {
@@ -645,6 +598,62 @@ class _LoginScreenState extends State<LoginScreen>
           ),
         ),
       ),
+    );
+  }
+
+  // ════════════════════════════════════════════════════════════════
+  //  Visitor Button (fade-in entrance)
+  // ════════════════════════════════════════════════════════════════
+  Widget _buildVisitorButton(ThemeData theme) {
+    return AnimatedOpacity(
+      opacity: _showVisitorButton ? 1.0 : 0.0,
+      duration: const Duration(milliseconds: 400),
+      child: TextButton(
+        onPressed: () => context.go('/home'),
+        style: TextButton.styleFrom(
+          foregroundColor: theme.colorScheme.onSurfaceVariant,
+          padding: const EdgeInsets.symmetric(vertical: 4),
+          minimumSize: const Size.fromHeight(32),
+        ),
+        child: Text(
+          'Login as Visitor',
+          style: theme.textTheme.bodyMedium?.copyWith(
+            decoration: TextDecoration.underline,
+            color: theme.colorScheme.onSurfaceVariant,
+          ),
+        ),
+      ),
+    );
+  }
+
+  // ════════════════════════════════════════════════════════════════
+  //  Signup Prompt
+  // ════════════════════════════════════════════════════════════════
+  Widget _buildSignupPrompt(ThemeData theme) {
+    final isDark = theme.brightness == Brightness.dark;
+    final greyColor = isDark ? Colors.grey.shade400 : Colors.grey.shade600;
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          "Don't have an account?",
+          style: theme.textTheme.bodySmall?.copyWith(
+            color: greyColor,
+          ),
+        ),
+        GestureDetector(
+          onTap: () => context.go('/signup'),
+          child: Text(
+            ' Sign Up',
+            style: theme.textTheme.bodySmall?.copyWith(
+              color: _saudiGreen,
+              fontWeight: FontWeight.bold,
+              decoration: TextDecoration.underline,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
