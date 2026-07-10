@@ -537,22 +537,6 @@ class _DriverLoginScreenState extends ConsumerState<DriverLoginScreen>
             ),
           ),
           const SizedBox(height: 12),
-
-          // ── Contact Admin ──
-          Center(
-            child: TextButton(
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text(
-                      'Please contact your administrator for account issues.',
-                    ),
-                  ),
-                );
-              },
-              child: const Text('Contact Admin'),
-            ),
-          ),
         ],
       ),
     );
@@ -640,6 +624,10 @@ class _DriverLoginScreenState extends ConsumerState<DriverLoginScreen>
           child: ElevatedButton(
             onPressed: _isLoading ? null : _login,
             style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF1A237E),
+              disabledBackgroundColor: const Color(0xFF1A237E).withValues(alpha: 0.6),
+              foregroundColor: Colors.white,
+              disabledForegroundColor: Colors.white.withValues(alpha: 0.7),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
