@@ -236,7 +236,9 @@ class _DriverLoginScreenState extends ConsumerState<DriverLoginScreen>
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              theme.colorScheme.primaryContainer,
+              theme.brightness == Brightness.dark
+                  ? const Color(0xFF1B2838)
+                  : const Color(0xFF7C4DFF),
               theme.colorScheme.surface,
             ],
           ),
@@ -306,8 +308,12 @@ class _DriverLoginScreenState extends ConsumerState<DriverLoginScreen>
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  theme.colorScheme.primary,
-                  theme.colorScheme.primaryContainer,
+                  theme.brightness == Brightness.dark
+                      ? const Color(0xFF0D1B2A)
+                      : const Color(0xFF1A237E),
+                  theme.brightness == Brightness.dark
+                      ? const Color(0xFF1B2838)
+                      : const Color(0xFF7C4DFF),
                 ],
               ),
             ),
@@ -321,10 +327,12 @@ class _DriverLoginScreenState extends ConsumerState<DriverLoginScreen>
                   height: circleSize,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: theme.colorScheme.surface.withValues(alpha: 0.15),
+                    color: Colors.white.withValues(alpha: 0.15),
                     boxShadow: [
                       BoxShadow(
-                        color: theme.colorScheme.primary.withValues(alpha: 0.35),
+                        color: theme.brightness == Brightness.dark
+                            ? const Color(0xFF0D1B2A).withValues(alpha: 0.5)
+                            : const Color(0xFF1A237E).withValues(alpha: 0.35),
                         blurRadius: 28,
                         spreadRadius: 4,
                       ),
@@ -333,14 +341,14 @@ class _DriverLoginScreenState extends ConsumerState<DriverLoginScreen>
                   child: Icon(
                     Icons.local_shipping,
                     size: iconSize,
-                    color: theme.colorScheme.onPrimary,
+                    color: Colors.white,
                   ),
                 ),
                 const SizedBox(height: 18),
                 Text(
                   'Driver App',
                   style: theme.textTheme.headlineMedium?.copyWith(
-                    color: theme.colorScheme.onPrimary,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                     letterSpacing: -0.5,
                   ),
@@ -349,7 +357,7 @@ class _DriverLoginScreenState extends ConsumerState<DriverLoginScreen>
                 Text(
                   'HR System',
                   style: theme.textTheme.bodyLarge?.copyWith(
-                    color: theme.colorScheme.onPrimary.withValues(alpha: 0.85),
+                    color: Colors.white.withValues(alpha: 0.85),
                     fontWeight: FontWeight.w500,
                     letterSpacing: 0.5,
                   ),
@@ -375,10 +383,14 @@ class _DriverLoginScreenState extends ConsumerState<DriverLoginScreen>
           height: 72,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: theme.colorScheme.primaryContainer,
+            color: theme.brightness == Brightness.dark
+                ? const Color(0xFF1B2838)
+                : const Color(0xFF7C4DFF),
             boxShadow: [
               BoxShadow(
-                color: theme.colorScheme.primary.withValues(alpha: 0.2),
+                color: theme.brightness == Brightness.dark
+                    ? const Color(0xFF0D1B2A).withValues(alpha: 0.3)
+                    : const Color(0xFF1A237E).withValues(alpha: 0.2),
                 blurRadius: 16,
                 spreadRadius: 2,
               ),
@@ -387,7 +399,7 @@ class _DriverLoginScreenState extends ConsumerState<DriverLoginScreen>
           child: Icon(
             Icons.local_shipping,
             size: 40,
-            color: theme.colorScheme.onPrimaryContainer,
+            color: Colors.white,
           ),
         ),
         const SizedBox(height: 14),
@@ -415,9 +427,9 @@ class _DriverLoginScreenState extends ConsumerState<DriverLoginScreen>
   // ──────────────────────────────────────────────
   Widget _buildFormCard(ThemeData theme) {
     return Transform.translate(
-      offset: const Offset(0, -28),
+      offset: const Offset(0, -48),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.only(left: 20, right: 20, bottom: 32),
         child: Card(
           elevation: 8,
           shadowColor: theme.colorScheme.shadow.withValues(alpha: 0.25),
@@ -671,11 +683,11 @@ class _HeaderWaveClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
-    path.lineTo(0, size.height - 35);
+    path.lineTo(0, size.height - 50);
 
-    // First curve (left third)
-    final firstControlPoint = Offset(size.width / 4, size.height + 5);
-    final firstEndPoint = Offset(size.width / 2, size.height - 15);
+    // First curve (left third) — deeper dip for a more pronounced wave
+    final firstControlPoint = Offset(size.width / 4, size.height + 15);
+    final firstEndPoint = Offset(size.width / 2, size.height - 10);
     path.quadraticBezierTo(
       firstControlPoint.dx,
       firstControlPoint.dy,
@@ -686,9 +698,9 @@ class _HeaderWaveClipper extends CustomClipper<Path> {
     // Second curve (right two-thirds)
     final secondControlPoint = Offset(
       3 * size.width / 4,
-      size.height - 45,
+      size.height - 25,
     );
-    final secondEndPoint = Offset(size.width, size.height - 10);
+    final secondEndPoint = Offset(size.width, size.height - 5);
     path.quadraticBezierTo(
       secondControlPoint.dx,
       secondControlPoint.dy,
