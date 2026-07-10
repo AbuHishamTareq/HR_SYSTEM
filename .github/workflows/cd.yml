@@ -47,7 +47,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
 
       - name: Install dependencies
-        run: composer install --no-progress --prefer-dist --optimize-autoloader
+        run: composer install --no-progress --prefer-dist --optimize-autoloader --ignore-platform-req=php
 
       - name: Prepare environment
         run: |
@@ -169,7 +169,7 @@ jobs:
           coverage: none
 
       - name: Install dependencies (no dev)
-        run: composer install --no-dev --no-progress --prefer-dist --optimize-autoloader
+        run: composer install --no-dev --no-progress --prefer-dist --optimize-autoloader --ignore-platform-req=php
 
       - name: Prepare production env
         run: |
