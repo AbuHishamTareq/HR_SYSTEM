@@ -31,8 +31,12 @@ export const FloatingInput = forwardRef<HTMLInputElement, FloatingInputProps>(
           {/* Start icon (always leading side) */}
           {startIcon && (
             <div
-              className="absolute inset-y-0 start-0 flex items-center ps-3 z-10 
+              className="absolute start-0 flex items-center ps-3 z-10 
                           pointer-events-none text-[var(--text-muted)]"
+              style={{
+                top: 'calc(1rem + 1px)',
+                bottom: 'calc(0.25rem + 1px)',
+              }}
               aria-hidden="true"
             >
               {startIcon}
@@ -52,9 +56,13 @@ export const FloatingInput = forwardRef<HTMLInputElement, FloatingInputProps>(
           {endIcon && (
             <button
               type="button"
-              className="absolute inset-y-0 end-0 flex items-center pe-3 z-10 
+              className="absolute end-0 flex items-center pe-3 z-10 
                          text-[var(--text-muted)] hover:text-[var(--text-primary)] 
                          transition-colors duration-150"
+              style={{
+                top: 'calc(1rem + 1px)',
+                bottom: 'calc(0.25rem + 1px)',
+              }}
               onClick={onEndIconClick}
               tabIndex={-1}
               aria-label={label}
