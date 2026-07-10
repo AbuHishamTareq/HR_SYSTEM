@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../providers/auth_provider.dart';
 import '../screens/login_screen.dart';
+import '../screens/splash_screen.dart';
 import '../screens/dashboard_screen.dart';
 import '../screens/history_screen.dart';
 import '../screens/profile_screen.dart';
@@ -14,13 +15,16 @@ final routerProvider = Provider<GoRouter>((ref) {
   final routerNotifier = ref.watch(routerNotifierProvider);
 
   return GoRouter(
-    initialLocation: '/login',
+    initialLocation: '/splash',
     debugLogDiagnostics: true,
     refreshListenable: routerNotifier,
 
     redirect: (context, state) {
       final authState = ref.read(authProvider);
       final location = state.uri.toString();
+
+      // Allow splash screen without redirect
+      if (location == '/splash') return null;
 
       if (!authState.isAuthenticated && location != '/login') {
         return '/login';
@@ -34,6 +38,10 @@ final routerProvider = Provider<GoRouter>((ref) {
     },
 
     routes: [
+      GoRoute(
+        path: '/splash',
+        builder: (context, state) => const DriverSplashScreen(),
+      ),
       GoRoute(
         path: '/login',
         builder: (context, state) => const DriverLoginScreen(),
