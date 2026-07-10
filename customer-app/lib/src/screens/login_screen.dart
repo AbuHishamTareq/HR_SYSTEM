@@ -386,18 +386,18 @@ class _LoginScreenState extends State<LoginScreen>
                 borderRadius: BorderRadius.circular(28),
               ),
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(28, 0, 28, 32),
+                padding: const EdgeInsets.fromLTRB(28, 0, 28, 36),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     // ── Avatar badge (overlaps top edge) ──
                     Transform.translate(
-                      offset: const Offset(0, -36),
+                      offset: const Offset(0, -40),
                       child: _buildAvatarBadge(theme),
                     ),
                     // ── Content (pulled up snug against badge) ──
                     Transform.translate(
-                      offset: const Offset(0, -18),
+                      offset: const Offset(0, -20),
                       child: _buildCardContent(theme),
                     ),
                   ],
@@ -518,9 +518,10 @@ class _LoginScreenState extends State<LoginScreen>
     final isDark = theme.brightness == Brightness.dark;
 
     return SizedBox(
-      width: 100,
+      width: 130,
       child: DropdownButtonFormField<String>(
         initialValue: _countryCode,
+        isExpanded: true,
         decoration: InputDecoration(
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
