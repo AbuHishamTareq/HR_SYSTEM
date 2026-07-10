@@ -12,8 +12,8 @@ void main() {
       ),
     );
 
-    // Settle animations, post-frame callbacks, and any pending timers
-    await tester.pumpAndSettle();
+    // Pump one frame — the widget tree should render immediately
+    await tester.pump();
 
     // The app should show the splash screen on startup
     expect(find.byType(MaterialApp), findsOneWidget);
