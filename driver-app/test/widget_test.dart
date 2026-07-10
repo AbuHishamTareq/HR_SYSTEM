@@ -16,8 +16,8 @@ void main() {
       ),
     );
 
-    // Pump one frame — the widget tree should render immediately
-    await tester.pump();
+    // Advance past the splash screen's 2-second Future.delayed
+    await tester.pump(const Duration(seconds: 3));
 
     expect(find.byType(MaterialApp), findsOneWidget);
   });
