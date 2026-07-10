@@ -37,8 +37,9 @@ class UserService extends BaseService
     public function toggleStatus(User|int|string $user): User
     {
         $user = $user instanceof User ? $user : $this->userRepository->findByIdOrFail($user);
+
         return $this->userRepository->update($user, [
-            'is_active' => !$user->is_active,
+            'is_active' => ! $user->is_active,
         ]);
     }
 }

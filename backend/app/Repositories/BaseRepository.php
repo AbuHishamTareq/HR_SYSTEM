@@ -5,7 +5,6 @@ namespace App\Repositories;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 abstract class BaseRepository
@@ -69,7 +68,7 @@ abstract class BaseRepository
 
     public function update(Model|int|string $model, array $data): Model
     {
-        if (!($model instanceof Model)) {
+        if (! ($model instanceof Model)) {
             $model = $this->findByIdOrFail($model);
         }
 
@@ -80,7 +79,7 @@ abstract class BaseRepository
 
     public function delete(Model|int|string $model): bool
     {
-        if (!($model instanceof Model)) {
+        if (! ($model instanceof Model)) {
             $model = $this->findByIdOrFail($model);
         }
 
@@ -89,7 +88,7 @@ abstract class BaseRepository
 
     public function forceDelete(Model|int|string $model): bool
     {
-        if (!($model instanceof Model)) {
+        if (! ($model instanceof Model)) {
             $model = $this->findByIdOrFail($model);
         }
 
@@ -98,11 +97,11 @@ abstract class BaseRepository
 
     public function restore(Model|int|string $model): bool
     {
-        if (!($model instanceof Model)) {
+        if (! ($model instanceof Model)) {
             $model = $this->findByIdWithTrashed($model);
         }
 
-        if (!$model) {
+        if (! $model) {
             return false;
         }
 

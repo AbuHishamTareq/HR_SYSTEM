@@ -14,7 +14,7 @@ trait ApiResponse
             'data' => $data,
         ];
 
-        if (!empty($extra)) {
+        if (! empty($extra)) {
             $response = array_merge($response, $extra);
         }
 

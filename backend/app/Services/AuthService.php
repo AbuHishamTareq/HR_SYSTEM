@@ -38,11 +38,11 @@ class AuthService extends BaseService
     {
         $user = $this->userRepository->findByEmail($dto->email);
 
-        if (!$user || !Hash::check($dto->password, $user->password)) {
+        if (! $user || ! Hash::check($dto->password, $user->password)) {
             return null;
         }
 
-        if (!$user->is_active) {
+        if (! $user->is_active) {
             return null;
         }
 

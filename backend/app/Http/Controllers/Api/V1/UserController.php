@@ -30,7 +30,7 @@ class UserController extends Controller
     {
         $user = $this->userService->find($id);
 
-        if (!$user) {
+        if (! $user) {
             return $this->notFound('User not found');
         }
 
@@ -43,7 +43,7 @@ class UserController extends Controller
     {
         $deleted = $this->userService->delete($id);
 
-        if (!$deleted) {
+        if (! $deleted) {
             return $this->notFound('User not found');
         }
 

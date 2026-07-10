@@ -42,7 +42,7 @@ class AuthController extends Controller
         $dto = LoginDto::fromRequest($request->validated());
         $user = $this->authService->login($dto);
 
-        if (!$user) {
+        if (! $user) {
             return $this->unauthorized('Invalid credentials or account inactive');
         }
 
