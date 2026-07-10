@@ -1,0 +1,51 @@
+{
+  "@@locale": "ar",
+  "appName": "نظام الموارد البشرية",
+  "login": "تسجيل الدخول",
+  "phoneNumber": "رقم الهاتف",
+  "password": "كلمة المرور",
+  "otp": "التحقق من الرمز",
+  "verify": "تحقق",
+  "resend": "إعادة إرسال",
+  "home": "الرئيسية",
+  "bookings": "الحجوزات",
+  "profile": "الملف الشخصي",
+  "settings": "الإعدادات",
+  "darkMode": "الوضع الداكن",
+  "lightMode": "الوضع الفاتح",
+  "logout": "تسجيل الخروج",
+  "onboardingTitle1": "مرحباً بك في نظام الموارد البشرية",
+  "onboardingSubtitle1": "ابحث عن أفضل خدمات المنزل بنقرات قليلة",
+  "onboardingTitle2": "احجز الخدمات بسهولة",
+  "onboardingSubtitle2": "جدول المواعيد وأدر حجوزاتك بكل سهولة",
+  "onboardingTitle3": "سائقون محترفون",
+  "onboardingSubtitle3": "احصل على سائقين محترفين وموثوقين لاحتياجاتك",
+  "getStarted": "ابدأ الآن",
+  "skip": "تخطي",
+  "next": "التالي",
+  "welcome": "مرحباً",
+  "sendOtp": "إرسال الرمز",
+  "enterPhone": "أدخل رقم هاتفك",
+  "enterOtp": "أدخل رمز التحقق",
+  "otpSent": "تم إرسال الرمز إلى {phone}",
+  "@otpSent": {
+    "placeholders": {
+      "phone": {}
+    }
+  },
+  "resendIn": "إعادة الإرسال بعد {seconds}ث",
+  "@resendIn": {
+    "placeholders": {
+      "seconds": {}
+    }
+  },
+  "invalidPhone": "يرجى إدخال رقم هاتف صحيح",
+  "invalidOtp": "يرجى إدخال رمز تحقق صحيح",
+  "noAccount": "ليس لديك حساب؟",
+  "contactSupport": "اتصل بالدعم",
+  "loading": "جارٍ التحميل...",
+  "error": "خطأ",
+  "retry": "إعادة المحاولة",
+  "cancel": "إلغاء",
+  "confirm": "تأكيد"
+}

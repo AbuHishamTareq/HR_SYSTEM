@@ -1,0 +1,51 @@
+{
+  "@@locale": "en",
+  "appName": "HR System",
+  "login": "Login",
+  "phoneNumber": "Phone Number",
+  "password": "Password",
+  "otp": "OTP Verification",
+  "verify": "Verify",
+  "resend": "Resend",
+  "home": "Home",
+  "bookings": "Bookings",
+  "profile": "Profile",
+  "settings": "Settings",
+  "darkMode": "Dark Mode",
+  "lightMode": "Light Mode",
+  "logout": "Logout",
+  "onboardingTitle1": "Welcome to HR System",
+  "onboardingSubtitle1": "Find the best home services with just a few taps",
+  "onboardingTitle2": "Book Services Easily",
+  "onboardingSubtitle2": "Schedule appointments and manage your bookings effortlessly",
+  "onboardingTitle3": "Professional Drivers",
+  "onboardingSubtitle3": "Get matched with verified professional drivers for your needs",
+  "getStarted": "Get Started",
+  "skip": "Skip",
+  "next": "Next",
+  "welcome": "Welcome",
+  "sendOtp": "Send OTP",
+  "enterPhone": "Enter your phone number",
+  "enterOtp": "Enter the verification code",
+  "otpSent": "OTP sent to {phone}",
+  "@otpSent": {
+    "placeholders": {
+      "phone": {}
+    }
+  },
+  "resendIn": "Resend in {seconds}s",
+  "@resendIn": {
+    "placeholders": {
+      "seconds": {}
+    }
+  },
+  "invalidPhone": "Please enter a valid phone number",
+  "invalidOtp": "Please enter a valid OTP",
+  "noAccount": "Don't have an account?",
+  "contactSupport": "Contact Support",
+  "loading": "Loading...",
+  "error": "Error",
+  "retry": "Retry",
+  "cancel": "Cancel",
+  "confirm": "Confirm"
+}

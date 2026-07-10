@@ -1,0 +1,77 @@
+{
+  "common": {
+    "loading": "جاري التحميل...",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "create": "إنشاء",
+    "search": "بحث",
+    "filter": "تصفية",
+    "export": "تصدير",
+    "no_data": "لا توجد بيانات",
+    "confirm": "تأكيد",
+    "back": "رجوع",
+    "next": "التالي",
+    "submit": "إرسال",
+    "actions": "إجراءات",
+    "status": "الحالة",
+    "active": "نشط",
+    "inactive": "غير نشط"
+  },
+  "auth": {
+    "login": "تسجيل الدخول",
+    "logout": "تسجيل الخروج",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "remember_me": "تذكرني",
+    "forgot_password": "نسيت كلمة المرور؟",
+    "login_title": "تسجيل الدخول إلى حسابك",
+    "login_subtitle": "أدخل بيانات الاعتماد الخاصة بك للوصول إلى لوحة التحكم",
+    "invalid_credentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+    "session_expired": "انتهت الجلسة، يرجى تسجيل الدخول مرة أخرى",
+    "welcome_back": "مرحباً بعودتك",
+    "no_account": "ليس لديك حساب؟",
+    "sign_up": "إنشاء حساب",
+    "brand_name": "نظام الموارد البشرية",
+    "tagline": "إدارة القوى العاملة بكفاءة",
+    "brand_subtitle": "منصة إدارة الموارد البشرية والخدمات المنزلية"
+  },
+  "nav": {
+    "dashboard": "لوحة التحكم",
+    "bookings": "الحجوزات",
+    "contracts": "العقود",
+    "dispatch": "التوزيع",
+    "schedule": "الجدول",
+    "promotions": "العروض",
+    "coupons": "الكوبونات",
+    "hr": "إدارة الموارد البشرية",
+    "accounting": "المحاسبة",
+    "reports": "التقارير",
+    "settings": "الإعدادات",
+    "drivers": "السائقين",
+    "workers": "العمال",
+    "customers": "العملاء",
+    "services": "الخدمات"
+  },
+  "dashboard": {
+    "today_orders": "طلبات اليوم",
+    "active_orders": "الطلبات النشطة",
+    "completed_orders": "الطلبات المكتملة",
+    "cancelled_orders": "الطلبات الملغية",
+    "revenue": "الإيرادات",
+    "drivers_online": "السائقين المتصلين",
+    "workers_available": "العمال المتاحين",
+    "most_requested": "الخدمات الأكثر طلباً"
+  },
+  "theme": {
+    "light": "فاتح",
+    "dark": "داكن",
+    "toggle": "تبديل المظهر"
+  },
+  "locale": {
+    "en": "English",
+    "ar": "العربية",
+    "switch": "تغيير اللغة"
+  }
+}

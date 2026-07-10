@@ -1,0 +1,77 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "search": "Search",
+    "filter": "Filter",
+    "export": "Export",
+    "no_data": "No data available",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "actions": "Actions",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "Inactive"
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password",
+    "remember_me": "Remember Me",
+    "forgot_password": "Forgot Password?",
+    "login_title": "Sign in to your account",
+    "login_subtitle": "Enter your credentials to access the dashboard",
+    "invalid_credentials": "Invalid email or password",
+    "session_expired": "Session expired, please login again",
+    "welcome_back": "Welcome back",
+    "no_account": "Don't have an account?",
+    "sign_up": "Sign up",
+    "brand_name": "HR System",
+    "tagline": "Manage your workforce efficiently",
+    "brand_subtitle": "HR & Home Services Management Platform"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "bookings": "Bookings",
+    "contracts": "Contracts",
+    "dispatch": "Dispatch",
+    "schedule": "Schedule",
+    "promotions": "Promotions",
+    "coupons": "Coupons",
+    "hr": "HR Management",
+    "accounting": "Accounting",
+    "reports": "Reports",
+    "settings": "Settings",
+    "drivers": "Drivers",
+    "workers": "Workers",
+    "customers": "Customers",
+    "services": "Services"
+  },
+  "dashboard": {
+    "today_orders": "Today's Orders",
+    "active_orders": "Active Orders",
+    "completed_orders": "Completed Orders",
+    "cancelled_orders": "Cancelled Orders",
+    "revenue": "Revenue",
+    "drivers_online": "Drivers Online",
+    "workers_available": "Workers Available",
+    "most_requested": "Most Requested Services"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "toggle": "Toggle theme"
+  },
+  "locale": {
+    "en": "English",
+    "ar": "العربية",
+    "switch": "Switch language"
+  }
+}

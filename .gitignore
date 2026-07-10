@@ -1,0 +1,56 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Env
+.env
+.env.backup
+.env.production
+
+# Dependencies
+backend/vendor/
+crm/node_modules/
+customer-app/.dart_tool/
+customer-app/.packages
+customer-app/build/
+customer-app/.flutter-plugins
+customer-app/.flutter-plugins-dependencies
+driver-app/.dart_tool/
+driver-app/.packages
+driver-app/build/
+driver-app/.flutter-plugins
+driver-app/.flutter-plugins-dependencies
+
+# Build output
+crm/dist/
+backend/public/build/
+backend/public/hot
+backend/storage/*.key
+backend/storage/pail
+
+# Laravel
+backend/.phpunit.cache/
+backend/.phpunit.result.cache
+backend/_ide_helper.php
+backend/Homestead.yaml
+backend/auth.json
+backend/bootstrap/cache/*.php
+backend/storage/framework/cache/data/*
+backend/storage/framework/sessions/*
+backend/storage/framework/views/*
+
+# Flutter
+**/android/.gradle/
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+
+# Logs
+*.log
