@@ -12,6 +12,9 @@ void main() {
       ),
     );
 
+    // Settle animations, post-frame callbacks, and any pending timers
+    await tester.pumpAndSettle();
+
     expect(find.byType(MaterialApp), findsOneWidget);
   });
 }
